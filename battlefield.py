@@ -21,14 +21,21 @@ class Battlefield:
        
     
     def battle_phase(self):
-        robot_one.attack(dinosaur_one)
-        print((f'{robot_one.name} attacked {dinosaur_one.name} with {weapon_robot.name} for {weapon_robot.attack_power} damage!'))
-        print(f'{dinosaur_one.name} has {dinosaur_one.health} health remaining.')
-        dinosaur_one.attack(robot_one)
-        print(f'{dinosaur_one.name} attacked {robot_one.name} for {dinosaur_one.attack_power} damage!')
-        print(f'{robot_one.name} has {robot_one.health} health remaining.')
+        while dinosaur_one.health >= 1: 
+            robot_one.attack(dinosaur_one)
+            print((f'{robot_one.name} attacked {dinosaur_one.name} with {weapon_robot.name} for {weapon_robot.attack_power} damage!'))
+            print(f'{dinosaur_one.name} has {dinosaur_one.health} health remaining.')
+            dinosaur_one.attack(robot_one)
+            print(f'{dinosaur_one.name} attacked {robot_one.name} for {dinosaur_one.attack_power} damage!')
+            print(f'{robot_one.name} has {robot_one.health} health remaining.')
+        else:
+            print('Game over!')
+            
     def display_winner(self):
-        pass
+        if robot_one.health > dinosaur_one.health:
+            print(f'Robot {robot_one.name} wins!')
+        else:
+            print(f'Dinosaur {dinosaur_one.name} wins!')
 
 
 # print(dinosaur_one.health)
