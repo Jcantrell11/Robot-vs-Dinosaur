@@ -1,6 +1,6 @@
 from weapon import Weapon
 
-weapon_robot = Weapon('Power Punch', 20)
+weapon_robot = Weapon('Power Punch', 50)
 
 class Robot:
     def __init__(self, name):
@@ -9,7 +9,12 @@ class Robot:
         self.active_weapon = Weapon
         
     def attack(self, dinosaur):
-        dinosaur.health -= weapon_robot.attack_power
+        if self.health > 0:
+            dinosaur.health -= weapon_robot.attack_power
+            print((f'Robot {self.name} attacked {dinosaur.name} with {weapon_robot.name} for {weapon_robot.attack_power} damage!'))
+            print(f'Dinosaur {dinosaur.name} has {dinosaur.health} health remaining.')
+            print("")
+        
         
 
    

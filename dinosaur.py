@@ -1,5 +1,5 @@
 
-dinosaur_one = ('Little Foot', 20)
+dinosaur_one = ('Little Foot', 50)
 
 class Dinosaur:
     def __init__(self, name, attack_power):
@@ -8,6 +8,10 @@ class Dinosaur:
         self.health = 100
 
     def attack(self, robot):
-        robot.health -= self.attack_power
+        if self.health > 0:
+            robot.health -= self.attack_power
+            print(f'Dinosaur {self.name} attacked {robot.name} for {self.attack_power} damage!')
+            print(f'Robot {robot.name} has {robot.health} health remaining.')
+            print("")
 
 
