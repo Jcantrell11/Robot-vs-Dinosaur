@@ -12,24 +12,30 @@ class Battlefield:
         self.dinosaur = Dinosaur
 
     def run_game(self):
-        self.display_welcome
-        self.battle_phase
-        self.display_winner
+        self.display_welcome()
+        self.battle_phase()
+        self.display_winner()
 
     def display_welcome(self):
         print('Welcome to the game!')
        
     
     def battle_phase(self):
-        while dinosaur_one.health >= 1: 
+        while dinosaur_one.health != 0: 
             robot_one.attack(dinosaur_one)
             print((f'{robot_one.name} attacked {dinosaur_one.name} with {weapon_robot.name} for {weapon_robot.attack_power} damage!'))
             print(f'{dinosaur_one.name} has {dinosaur_one.health} health remaining.')
-            dinosaur_one.attack(robot_one)
-            print(f'{dinosaur_one.name} attacked {robot_one.name} for {dinosaur_one.attack_power} damage!')
-            print(f'{robot_one.name} has {robot_one.health} health remaining.')
+            print("")
+            if robot_one.health != 0:
+                dinosaur_one.attack(robot_one)
+                print(f'{dinosaur_one.name} attacked {robot_one.name} for {dinosaur_one.attack_power} damage!')
+                print(f'{robot_one.name} has {robot_one.health} health remaining.')
+                print("")
+            elif dinosaur_one.health == 0:
+                break
         else:
-            print('Game over!')
+            if dinosaur_one.health == 0:
+                print('Game over!')
             
     def display_winner(self):
         if robot_one.health > dinosaur_one.health:
